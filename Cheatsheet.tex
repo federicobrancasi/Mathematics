@@ -1,0 +1,31 @@
+% Use the "Template" class with specified options and set page margins
+\documentclass[10pt,a4paper]{Template}
+\geometry{left=1cm,right=1cm,top=1cm,bottom=1cm} % Set custom page margins
+
+% Import packages for encoding, fonts, math, etc.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{tikz}
+\usepackage{relsize}
+\usepackage{scalefnt}
+
+% Beginning of the document
+\begin{document}
+
+% Reset page style
+\thispagestyle{empty}
+
+% The function \inputFile compiles the Cheatsheet based on the number passed:
+% - \inputFile{0} compiles the 3 cheatsheets together
+% - \inputFile{1} compiles the contents of cheatsheet "Linear Algebra.tex"
+% - \inputFile{2} compiles the contents of cheatsheet "Multivariate Calculus.tex"
+% - \inputFile{3} compiles the contents of cheatsheet "Principal Component Analysis.tex"
+% Entering a number other than 0, 1 or 2 will generate an error message.
+\inputFile{0}
+
+% End of the document
+\end{document}

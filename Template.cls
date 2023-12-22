@@ -13,7 +13,7 @@
 \definecolor{LightBlue}{HTML}{00a6fb}
 \definecolor{Blue}{HTML}{0077b6}
 \definecolor{LightGrey}{HTML}{515c50}
-\colorlet{topic}{Blue}    % Set 'topic' color to Blue
+\colorlet{topic}{Blue}  % Set 'topic' color to Blue
 \colorlet{subtopic}{LightBlue}  % Set 'subtopic' color to LightBlue
 \colorlet{divider}{LightGrey}  % Set 'divider' color to LightGrey
 
@@ -30,11 +30,11 @@
 % Import enumitem for customizing lists
 \RequirePackage{enumitem}
 \setlist{
-    leftmargin=*,
-    labelsep=0.5em,
-    nosep,
-    itemsep=0.25\baselineskip,
-    after=\vskip0.25\baselineskip
+	leftmargin=*,
+	labelsep=0.5em,
+	nosep,
+	itemsep=0.25\baselineskip,
+	after=\vskip0.25\baselineskip
 }
 \setlist[itemize]{label=\itemmarker}
 
@@ -61,23 +61,23 @@
 
 % Define a command to create the header
 \newcommand{\makeheader}[2][]{%
-  \begingroup
-    {\Huge\bfseries\MakeUppercase{#1}\par}
-    \medskip
-    {\large\bfseries\color{subtopic}#2\par}
-    \medskip
-  \endgroup\medskip
+	\begingroup
+	{\Huge\bfseries\MakeUppercase{#1}\par}
+	\medskip
+	{\large\bfseries\color{subtopic}#2\par}
+	\medskip
+	\endgroup\medskip
 }
 
 % Define a command for creating a major topic section
 \newcommand{\topic}[1][]{%
-  {\color{topic}\LARGE\bfseries\MakeUppercase{#1}}\\[-1ex]%
-  {\color{topic}\rule{\linewidth}{2pt}\par}\medskip
+	{\color{topic}\LARGE\bfseries\MakeUppercase{#1}}\\[-1ex]%
+	{\color{topic}\rule{\linewidth}{2pt}\par}\medskip
 }
 
 % Define a command for creating a subtopic within a major topic
 \newcommand{\subtopic}[1]{%
-    \textbf{\color{subtopic}{#1}} \par
+	\textbf{\color{subtopic}{#1}} \par
 }
 
 % Commands for equations
@@ -86,3 +86,23 @@
 \newcommand{\svec}{\mathbf{s}}
 \newcommand{\uvec}{\mathbf{u}}
 \newcommand{\vvec}{\mathbf{v}}
+
+% Commands for compiling different Cheatsheets
+\newcommand{\inputFile}[1]{%
+    \ifcase#1
+        \input{Linear Algebra}
+        \null\newpage
+        \pagestyle{empty}
+        \input{Multivariate Calculus}
+        \pagestyle{empty}
+        \input{Principal Component Analysis}
+    \or
+        \input{Linear Algebra}
+    \or
+        \input{Multivariate Calculus}
+    \or
+        \input{Principal Component Analysis}
+    \else
+        \textbf{Error:} File not found % Default case
+    \fi
+}

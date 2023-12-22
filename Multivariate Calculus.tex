@@ -1,186 +1,163 @@
-% Use the "Template" class with specified options and set page margins
-\documentclass[10pt,a4paper]{Template}
-\geometry{left=1cm,right=1cm,top=1cm,bottom=1cm} % Set custom page margins
-
-% Import packages for encoding, fonts, math, etc.
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[default]{lato}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{physics}
-\usepackage{tikz}
-\usepackage{relsize}
-\usepackage{scalefnt}
-
-% Beginning of the document
-\begin{document}
-
-% Reset page style
-\thispagestyle{empty}
-
 % Header of the document
 \makeheader[Mathematics]{Multivariate Calculus Cheat Sheet}
 
 % First column of the page
 \begin{minipage}{0.48\textwidth}
-
-\topic[Quick Derivation Rules]
-
-\subtopic{Derivative definition}
-\[ f^{\prime}(x)=\frac{\mathrm{d} f(x)}{\mathrm{d} x}=\lim _{\Delta x \rightarrow 0}\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)\]
-
-\divider
-
-\subtopic{Sum Rule}
-
-\[
-\frac{\mathrm{d}}{\mathrm{d} x}(f(x)+g(x))=\frac{\mathrm{d}}{\mathrm{d} x}(f(x))+\frac{\mathrm{d}}{\mathrm{d} x}(g(x))
-\]
-
-\divider
-
-\subtopic{Power Rule}
-
-\vspace{-0.15cm}
-
-\begin{center}
-Given $f(x)=a x^{b}$,
-
-then $f^{\prime}(x)=a b x^{(b-1)}$
-\end{center}
-
-\vspace{-0.15cm}
-
-\divider
-
-\subtopic{Product Rule}
-
-\vspace{-0.15cm}
-
-\begin{center}
-Given $A(x)=f(x) g(x)$,
-
-then $A^{\prime}(x)=f^{\prime}(x) g(x)+f(x) g^{\prime}(x)$
-\end{center}
-
-\vspace{-0.15cm}
-
-\divider
-
-\subtopic{Chain Rule}
-
-\vspace{-0.15cm}
-
-\begin{center}
-Given $h=h(p)$ and $p=p(m)$,
-
-then $\frac{\mathrm{d} h}{\mathrm{~d} m}=\frac{\mathrm{d} h}{\mathrm{~d} p} \times \frac{\mathrm{d} p}{\mathrm{~d} m}$
-\end{center}
-
-\vspace{-0.15cm}
-
-\divider
-
-\subtopic{Total derivative}
-For the function $f(x, y, z, \ldots)$, where each variable is a function of parameter $t$, the total derivative is:
-
-\[
-\frac{\mathrm{d} f}{\mathrm{~d} t}=\frac{\partial f}{\partial x} \frac{\mathrm{d} x}{\mathrm{~d} t}+\frac{\partial f}{\partial y} \frac{\mathrm{d} y}{\mathrm{~d} t}+\frac{\partial f}{\partial z} \frac{\mathrm{d} z}{\mathrm{~d} t}+\ldots
-\]
-
-\vspace{0.5cm}
-
-\topic[Derivative Structures]
-Given $f=f(x, y, z)$, we have: \\
-
-\subtopic{Jacobian}
-
-\[
-\mathbf{J}_{f}=\left[\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right]
-\]
-The Jacobian is a matrix representing the \textbf{partial derivatives} of a vector function with respect to its input variables. It is useful for understanding how the function changes as its independent variables change.
-
-\divider
-
-\subtopic{Hessian}
-
-\[
-\mathbf{H}_{f}=\left[\begin{array}{ccc}
-\frac{\partial^{2} f}{\partial x^{2}} & \frac{\partial^{2} f}{\partial x \partial y} & \frac{\partial^{2} f}{\partial x \partial z} \\
-\frac{\partial^{2} f}{\partial y \partial x} & \frac{\partial^{2} f}{\partial y^{2}} & \frac{\partial^{2} f}{\partial y \partial z} \\
-\frac{\partial^{2} f}{\partial z \partial x} & \frac{\partial^{2} f}{\partial z \partial y} & \frac{\partial^{2} f}{\partial z^{2}}
-\end{array}\right]
-\]
-The Hessian is a matrix of the \textbf{second partial derivatives} of a scalar function with respect to its input variables. This symmetric matrix, on the other hand, provides crucial information about the concavity and slope change of the function with respect to its variables.
-
-
+	
+	\topic[Quick Derivation Rules]
+	
+	\subtopic{Derivative definition}
+	\[ f^{\prime}(x)=\frac{\mathrm{d} f(x)}{\mathrm{d} x}=\lim _{\Delta x \rightarrow 0}\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)\]
+	
+	\divider
+	
+	\subtopic{Sum Rule}
+	
+	\[
+		\frac{\mathrm{d}}{\mathrm{d} x}(f(x)+g(x))=\frac{\mathrm{d}}{\mathrm{d} x}(f(x))+\frac{\mathrm{d}}{\mathrm{d} x}(g(x))
+	\]
+	
+	\divider
+	
+	\subtopic{Power Rule}
+	
+	\vspace{-0.15cm}
+	
+	\begin{center}
+		Given $f(x)=a x^{b}$,
+		
+		then $f^{\prime}(x)=a b x^{(b-1)}$
+	\end{center}
+	
+	\vspace{-0.15cm}
+	
+	\divider
+	
+	\subtopic{Product Rule}
+	
+	\vspace{-0.15cm}
+	
+	\begin{center}
+		Given $A(x)=f(x) g(x)$,
+		
+		then $A^{\prime}(x)=f^{\prime}(x) g(x)+f(x) g^{\prime}(x)$
+	\end{center}
+	
+	\vspace{-0.15cm}
+	
+	\divider
+	
+	\subtopic{Chain Rule}
+	
+	\vspace{-0.15cm}
+	
+	\begin{center}
+		Given $h=h(p)$ and $p=p(m)$,
+		
+		then $\frac{\mathrm{d} h}{\mathrm{~d} m}=\frac{\mathrm{d} h}{\mathrm{~d} p} \times \frac{\mathrm{d} p}{\mathrm{~d} m}$
+	\end{center}
+	
+	\vspace{-0.15cm}
+	
+	\divider
+	
+	\subtopic{Total derivative}
+	For the function $f(x, y, z, \ldots)$, where each variable is a function of parameter $t$, the total derivative is:
+	
+	\[
+		\frac{\mathrm{d} f}{\mathrm{~d} t}=\frac{\partial f}{\partial x} \frac{\mathrm{d} x}{\mathrm{~d} t}+\frac{\partial f}{\partial y} \frac{\mathrm{d} y}{\mathrm{~d} t}+\frac{\partial f}{\partial z} \frac{\mathrm{d} z}{\mathrm{~d} t}+\ldots
+	\]
+	
+	\vspace{0.5cm}
+	
+	\topic[Derivative Structures]
+	Given $f=f(x, y, z)$, we have: \\
+	
+	\subtopic{Jacobian}
+	
+	\[
+		\mathbf{J}_{f}=\left[\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right]
+	\]
+	The Jacobian is a matrix representing the \textbf{partial derivatives} of a vector function with respect to its input variables. It is useful for understanding how the function changes as its independent variables change.
+	
+	\divider
+	
+	\subtopic{Hessian}
+	
+	\[
+		\mathbf{H}_{f}=\left[\begin{array}{ccc}
+			\frac{\partial^{2} f}{\partial x^{2}} & \frac{\partial^{2} f}{\partial x \partial y} & \frac{\partial^{2} f}{\partial x \partial z} \\
+			\frac{\partial^{2} f}{\partial y \partial x} & \frac{\partial^{2} f}{\partial y^{2}} & \frac{\partial^{2} f}{\partial y \partial z} \\
+			\frac{\partial^{2} f}{\partial z \partial x} & \frac{\partial^{2} f}{\partial z \partial y} & \frac{\partial^{2} f}{\partial z^{2}}
+		\end{array}\right]
+	\]
+	The Hessian is a matrix of the \textbf{second partial derivatives} of a scalar function with respect to its input variables. This symmetric matrix, on the other hand, provides crucial information about the concavity and slope change of the function with respect to its variables.
+	
+	
 \end{minipage}
 \hfill
 % Second column of the page
 \begin{minipage}{0.48\textwidth}
-
-\vspace{-1.59cm}
-
-\topic[Taylor Series]
-
-\subtopic{Univariate}
-
-The Taylor polynomial is a way to approximate a complex function by a simpler polynomial. For a function $f(x)$ that is differentiable infinitely many times around a point $c$, the Taylor polynomial centered in $c$ is given by the following expression:
-
-\vspace{-0.5cm}
-\[
-\begin{aligned}
-f(x) & =f(c)+f^{\prime}(c)(x-c)+\frac{1}{2} f^{\prime \prime}(c)(x-c)^{2}+\ldots \\
-& =\sum_{n=0}^{\infty} \frac{f^{(n)}(c)}{n !}(x-c)^{n} \;\; \text{(Compact Formalization)}
-\end{aligned}
-\]
-
-This polynomial approximates $f(x)$ around point $c$ using the derivatives of $f$ evaluated at $c$, considering all successive derivatives. \\
-
-{\small \faLightbulb} \ If we consider the univariate Taylor polynomial centered at $c=0$, this becomes known as the \textbf{Maclaurin series}, which is a special form of the Taylor polynomial centered in the origin.
-
-\divider
-
-\subtopic{Multivariate}
-
-In the case of functions with several variables, the Taylor polynomial becomes an expansion around a point $\mathbf{c}$ in a multivariate space. For a function $f(\mathbf{x})$ that can be differentiated infinitely many times around $\mathbf{c}$, the Taylor polynomial centered in $\mathbf{c}$ is expressed as:
-
-\[
-\begin{aligned}
-f(\mathbf{x})= & f(\mathbf{c})+\mathbf{J}_{f}(\mathbf{c})(\mathbf{x}-\mathbf{c}) \ + \\
-& \frac{1}{2}(\mathbf{x}-\mathbf{c})^{t} \mathbf{H}_{f}(\mathbf{c})(\mathbf{x}-\mathbf{c})+\ldots
-\end{aligned}
-\]
-
-Where $\mathbf{J}_{f}(\mathbf{c})$ represents the vector of partial derivatives of $f$ evaluated in $\mathbf{c}$ (the Jacobian) and $\mathbf{H}_{f}(\mathbf{c})$ is the Hessian matrix, always evaluated in $\mathbf{c}$. This expansion makes it possible to approximate $f(\mathbf{x})$ around the point $\mathbf{c}$ in a multidimensional space.
-
-\vspace{0.5cm}
-
-\topic[Gradients]
-
-\subtopic{Gradient}
-\[
-\nabla f=\left[\begin{array}{c}
-\frac{\partial f}{\partial x} \\
-\\
-\frac{\partial f}{\partial y} \\
-\\
-\frac{\partial f}{\partial z}
-\end{array}\right] \;\; \text{(Vector of Partial Derivatives)}
-\]
-
-The gradient ($\nabla f$) of a function is a vector that indicates the direction and maximum growth intensity of the function in a multidimensional space. It provides crucial information about the gradient of the function in each direction.
-
-\divider
-
-\subtopic{Gradient Descent}
-\[
-s_{n+1}=s_{n}-\gamma \nabla f
-\]
-
-The gradient descent algorithm is an optimization method used to minimize a function iteratively. Using the negative gradient multiplied by a learning rate ($\gamma$), the current position is updated to move toward the local or global minimum of the function
-
+	
+	\vspace{-1.59cm}
+	
+	\topic[Taylor Series]
+	
+	\subtopic{Univariate}
+	
+	The Taylor polynomial is a way to approximate a complex function by a simpler polynomial. For a function $f(x)$ that is differentiable infinitely many times around a point $c$, the Taylor polynomial centered in $c$ is given by the following expression:
+	
+	\vspace{-0.5cm}
+	\[
+		\begin{aligned}
+			f(x) & =f(c)+f^{\prime}(c)(x-c)+\frac{1}{2} f^{\prime \prime}(c)(x-c)^{2}+\ldots                \\
+			     & =\sum_{n=0}^{\infty} \frac{f^{(n)}(c)}{n !}(x-c)^{n} \;\; \text{(Compact Formalization)} 
+		\end{aligned}
+	\]
+	
+	This polynomial approximates $f(x)$ around point $c$ using the derivatives of $f$ evaluated at $c$, considering all successive derivatives. \\
+	
+	{\small \faLightbulb} \ If we consider the univariate Taylor polynomial centered at $c=0$, this becomes known as the \textbf{Maclaurin series}, which is a special form of the Taylor polynomial centered in the origin.
+	
+	\divider
+	
+	\subtopic{Multivariate}
+	
+	In the case of functions with several variables, the Taylor polynomial becomes an expansion around a point $\mathbf{c}$ in a multivariate space. For a function $f(\mathbf{x})$ that can be differentiated infinitely many times around $\mathbf{c}$, the Taylor polynomial centered in $\mathbf{c}$ is expressed as:
+	
+	\[
+		\begin{aligned}
+			f(\mathbf{x})= & f(\mathbf{c})+\mathbf{J}_{f}(\mathbf{c})(\mathbf{x}-\mathbf{c}) \ +                             \\
+			               & \frac{1}{2}(\mathbf{x}-\mathbf{c})^{t} \mathbf{H}_{f}(\mathbf{c})(\mathbf{x}-\mathbf{c})+\ldots 
+		\end{aligned}
+	\]
+	
+	Where $\mathbf{J}_{f}(\mathbf{c})$ represents the vector of partial derivatives of $f$ evaluated in $\mathbf{c}$ (the Jacobian) and $\mathbf{H}_{f}(\mathbf{c})$ is the Hessian matrix, always evaluated in $\mathbf{c}$. This expansion makes it possible to approximate $f(\mathbf{x})$ around the point $\mathbf{c}$ in a multidimensional space.
+	
+	\vspace{0.5cm}
+	
+	\topic[Gradients]
+	
+	\subtopic{Gradient}
+	\[
+		\nabla f=\left[\begin{array}{c}
+			\frac{\partial f}{\partial x} \\
+			\\
+			\frac{\partial f}{\partial y} \\
+			\\
+			\frac{\partial f}{\partial z}
+		\end{array}\right] \;\; \text{(Vector of Partial Derivatives)}
+	\]
+	
+	The gradient ($\nabla f$) of a function is a vector that indicates the direction and maximum growth intensity of the function in a multidimensional space. It provides crucial information about the gradient of the function in each direction.
+	
+	\divider
+	
+	\subtopic{Gradient Descent}
+	\[
+		s_{n+1}=s_{n}-\gamma \nabla f
+	\]
+	
+	The gradient descent algorithm is an optimization method used to minimize a function iteratively. Using the negative gradient multiplied by a learning rate ($\gamma$), the current position is updated to move toward the local or global minimum of the function
+	
 \end{minipage}
-
-\end{document}
