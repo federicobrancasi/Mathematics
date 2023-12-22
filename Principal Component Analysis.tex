@@ -1,0 +1,187 @@
+% Use the "Template" class with specified options and set page margins
+\documentclass[10pt,a4paper]{Template}
+\geometry{left=1cm,right=1cm,top=1cm,bottom=1cm} % Set custom page margins
+
+% Import packages for encoding, fonts, math, etc.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{tikz}
+\usepackage{relsize}
+\usepackage{scalefnt}
+
+% Beginning of the document
+\begin{document}
+
+% Reset page style
+\thispagestyle{empty}
+
+% Header of the document
+\makeheader[Mathematics]{Principal Component Analysis Cheat Sheet}
+
+% First column of the page
+\begin{minipage}{0.48\textwidth}
+
+\topic[\Large Mean and Variance of \\High-Dimensional Datasets]
+
+\subtopic{Variance of High-Dimensional Datasets}
+
+Given a data set $\mathcal{D}=\left\{\boldsymbol{x}_{1}, \ldots, \boldsymbol{x}_{N}\right\}, \boldsymbol{x}_{n} \in \mathbb{R}^{D}$, we compute the variance of the data set as
+
+\[
+\mathbb{V}[\mathcal{D}]=\frac{1}{N} \sum_{n=1}^{N}\left(\boldsymbol{x}_{n}-\boldsymbol{\mu}\right)\left(\boldsymbol{x}_{n}-\boldsymbol{\mu}\right)^{\top} \in \mathbb{R}^{D \times D}
+\]
+
+\divider
+
+\subtopic{Linear Transformations}
+If we now modify every $x_{i} \in \mathcal{D}$ according to $\boldsymbol{x}_i' = \boldsymbol{A}\boldsymbol{x}_i + \boldsymbol{b}$, then the transformed mean and variance are:
+\[
+\begin{aligned}
+    \mathbb{E}[\mathcal{D'}] & = \boldsymbol{A} \cdot \mathbb{E}[\mathcal{D}] + \boldsymbol{b} \\
+    \mathbb{V}[\mathcal{D'}] & = \boldsymbol{A} \cdot \mathbb{V}[\mathcal{D}] \cdot \boldsymbol{A}^{\top}
+\end{aligned}
+\]
+
+\vspace{0.5cm}
+
+\topic[Inner Product]
+
+\subtopic{Definition}
+
+Consider a vector space $V$. A positive definite, symmetric bilinear mapping $\langle\cdot, \cdot\rangle: V \times V \rightarrow \mathbb{R}$ is called an inner product on $V$. 
+\vspace{0.10cm}
+\begin{itemize}
+    \item \textbf{Symmetric}: For all $\boldsymbol{x}, \boldsymbol{y} \in V$ it holds that $\langle\boldsymbol{x}, \boldsymbol{y}\rangle=\langle\boldsymbol{y}, \boldsymbol{x}\rangle$
+    \item \textbf{Positive Definite}: For all $\boldsymbol{x} \in V \backslash\{\mathbf{0}\}$ it holds that
+    \[
+    \langle\boldsymbol{x}, \boldsymbol{x}\rangle>0, \quad\langle\mathbf{0}, \mathbf{0}\rangle=0
+    \]
+    \item \textbf{Bilinear}: For all $\boldsymbol{x}, \boldsymbol{y}, \boldsymbol{z} \in V, \lambda \in \mathbb{R}$
+    \[
+    \begin{aligned}
+    & \langle\lambda \boldsymbol{x}+\boldsymbol{y}, \boldsymbol{z}\rangle=\lambda\langle\boldsymbol{x}, \boldsymbol{z}\rangle+\langle\boldsymbol{y}, \boldsymbol{z}\rangle \\
+    & \langle\boldsymbol{x}, \lambda \boldsymbol{y}+\boldsymbol{z}\rangle=\lambda\langle\boldsymbol{x}, \boldsymbol{y}\rangle+\langle\boldsymbol{x}, \boldsymbol{z}\rangle
+    \end{aligned}
+    \]
+\end{itemize}
+
+{\small \faLightbulb} \ In the canonical Euclidean context (no abstract spaces), the inner product coincides with the dot product between vectors. However, nonstandard definitions of the inner product may generate different results.
+
+\divider
+
+\subtopic{Inner Product: Lengths and Distances}
+
+Consider a vector space $V$ with an inner product $\langle\cdot, \cdot\rangle$. \\
+
+\begin{itemize}
+    \item The \textbf{length} of a vector $\boldsymbol{x} \in V$ is
+    \[
+    \|\boldsymbol{x}\|=\sqrt{\langle \boldsymbol{x}, \boldsymbol{x}\rangle}
+    \]
+    \item The \textbf{distance} between two vectors $\boldsymbol{x}, \boldsymbol{y} \in V$ is given by
+    \[
+    d(\boldsymbol{x}, \boldsymbol{y})=\|\boldsymbol{x}-\boldsymbol{y}\|=\sqrt{\langle \boldsymbol{x}-\boldsymbol{y}, \boldsymbol{x}-\boldsymbol{y}\rangle}
+    \]
+\end{itemize}
+
+\divider
+
+\subtopic{Inner Product: Angles}
+
+Consider a vector space $V$ with an inner product $\langle\cdot, \cdot\rangle$. The angle $\omega$ between two vectors $\boldsymbol{x}, \boldsymbol{y} \in V$ can be computed via
+
+\[
+\cos \omega=\frac{\langle\boldsymbol{x}, \boldsymbol{y}\rangle}{\|\boldsymbol{x}\|\|\boldsymbol{y}\|}
+\]
+
+{\small \faLightbulb} \ The length/norm $\|\boldsymbol{x}\|$ is defined via the inner product.
+
+\vspace{0.5cm}
+
+\end{minipage}
+\hfill
+% Second column of the page
+\begin{minipage}{0.48\textwidth}
+
+\vspace{-1.8cm}
+
+\topic[Projections]
+\subtopic{Projection onto 1D Subspaces}
+
+Consider a vector space $V$ with the dot product at the inner product and a subspace $U$ of $V$. With a basis vector $\boldsymbol{b}$ of $U$, we obtain the \textbf{orthogonal projection} of any vector $\boldsymbol{x} \in V$ onto $U$ via
+
+\[
+\pi_{U}(\boldsymbol{x})=\lambda \boldsymbol{b}, \quad \lambda=\frac{\boldsymbol{b}^{\top} \boldsymbol{x}}{\boldsymbol{b}^{\top} \boldsymbol{b}}=\frac{\boldsymbol{b}^{\top} \boldsymbol{x}}{\|\boldsymbol{b}\|^{2}}
+\]
+
+where $\lambda$ is the \textbf{coordinate} of $\pi_{U}(\boldsymbol{x})$ with respect to $\boldsymbol{b}$. \\
+The \textbf{projection matrix} $\boldsymbol{P}$ is
+
+\[
+\boldsymbol{P}=\frac{\boldsymbol{b} \boldsymbol{b}^{\top}}{\boldsymbol{b}^{\top} \boldsymbol{b}}=\frac{\boldsymbol{b} \boldsymbol{b}^{\top}}{\|\boldsymbol{b}\|^{2}}
+\]
+
+such that $\pi_{U}(\boldsymbol{x})=\boldsymbol{P} \boldsymbol{x}$ for all $\boldsymbol{x} \in V$.
+
+\divider 
+
+\subtopic{Projection onto K-dimensional Subspaces}
+
+Consider an $n$-dimensional vector space $V$ with the dot product at the inner product and a subspace $U$ of $V$. With basis vectors $\boldsymbol{b}_{1}, \ldots, \boldsymbol{b}_{k}$ of $U$ (which are concatenated in the matrix $\boldsymbol{B}$), we obtain the \textbf{orthogonal projection} of any vector $\boldsymbol{x} \in V$ onto $U$ via
+
+\[
+\pi_{U}(\boldsymbol{x}) =\boldsymbol{B} \boldsymbol{\lambda}, \quad \boldsymbol{\lambda}=\left(\boldsymbol{B}^{\top} \boldsymbol{B}\right)^{-1} \boldsymbol{B}^{\top} \boldsymbol{x} 
+\]
+
+where $\lambda$ is the \textbf{coordinate vector} of $\pi_{U}(x)$ with respect to the basis $\boldsymbol{b}_{1}, \ldots, \boldsymbol{b}_{k}$ of $U$. The \textbf{projection matrix} $\boldsymbol{P}$ is
+
+\[
+\boldsymbol{P}=\boldsymbol{B}\left(\boldsymbol{B}^{\top} \boldsymbol{B}\right)^{-1} \boldsymbol{B}^{\top}
+\]
+
+such that $\pi_{U}(\boldsymbol{x})=\boldsymbol{P} \boldsymbol{x}$ for all $\boldsymbol{x} \in V$.
+
+\vspace{0.5cm}
+
+\topic[PCA algorithm]
+
+\subtopic{Key Steps}
+
+\vspace{0.15cm}
+
+\begin{enumerate}
+    \item \textbf{Compute the mean} $\boldsymbol{\mu}$ of the data matrix \\ $\boldsymbol{X}=\left[\boldsymbol{x}_{1}|\ldots| \boldsymbol{x}_{N}\right]^{\top} \in \mathbb{R}^{N \times D}$
+
+    \item \textbf{Mean subtraction}: Replace all data points $\boldsymbol{x}_{i}$ with \\ $\tilde{\boldsymbol{x}}_{i}=\boldsymbol{x}_{i}-\mu$.
+
+    \item \textbf{Divide the data by its standard deviation} in each dimension: $\overline{\boldsymbol{X}}^{(d)}=\tilde{\boldsymbol{X}} / \sigma\left(\boldsymbol{X}^{(d)}\right)$ for $d=1, \ldots, D$.
+
+    \item \textbf{Compute the eigenvectors} (orthonormal) \textbf{and eigenvalues} of the data covariance matrix $\boldsymbol{S}=\frac{1}{N} \overline{\boldsymbol{X}}^{\top} \overline{\boldsymbol{X}}$
+
+    \item Choose the eigenvectors associated with the $M$ \textbf{largest eigenvalues} to be the basis of the principal subspace.
+
+    \item \textbf{Collect these eigenvector}s in a matrix $\boldsymbol{B}=\left[\boldsymbol{b}_{1}, \ldots, \boldsymbol{b}_{M}\right]$
+
+    \item \textbf{Orthogonal projection of the data} onto the principal axis using the projection matrix $\boldsymbol{B B}^{\top}$
+\end{enumerate}
+
+\divider
+
+\subtopic{PCA in High Dimensions}
+We need to solve the eigenvector/eigenvalue equation
+
+\[
+\underbrace{\frac{1}{N} {\color{Blue}\overline{\boldsymbol{X}}^{\top}}
+\overline{\boldsymbol{X}}}_{=\boldsymbol{S}} \overline{\boldsymbol{X}}^{\top} \boldsymbol{c}_{i}=\lambda_{i} {\color{Blue}\overline{\boldsymbol{X}}^{\top}} \boldsymbol{c}_{i} \qquad
+(\text{where}  \;\boldsymbol{c}_{i}=\overline{\boldsymbol{X}} \boldsymbol{b}_{i})
+\]
+
+{\small \faLightbulb} \ We multiply the canonical eigenvectors equation by ${\color{Blue}\overline{\boldsymbol{X}}^{\top}}$ so that we can recover $\overline{\boldsymbol{X}}^{\top} \boldsymbol{c}_{i}$ as the eigenvector of $\boldsymbol{S}$ with (the same) eigenvalue $\lambda_{i}$.
+
+\end{minipage}
+
+\end{document}
