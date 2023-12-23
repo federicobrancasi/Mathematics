@@ -18,10 +18,10 @@ This repository contains detailed notes from the course "**Mathematics for Machi
 
 - **Python Labs**: A series of Jupyter notebooks that correspond to the labs and exercises done throughout the course. They provide a hands-on opportunity to apply the mathematical knowledge acquired, with projects that include:
 
-  - PageRank algorithm for an Internet simulation.
+  - PageRank algorithm for an Internet simulation
   - Training Neural Networks using multivariate computation
   - Nonlinear regression to fit models to datasets
-  - Feature analysis of the MNIST dataset through Principal Component Analysis.
+  - Feature analysis of the MNIST dataset through Principal Component Analysis
 
 ## How to Use This Repository
 
