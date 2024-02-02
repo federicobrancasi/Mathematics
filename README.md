@@ -1,4 +1,4 @@
-# Mathematics for Machine Learning
+# Mathematics for Machine Learning 📚🧮
 
 ## Overview
 
@@ -28,4 +28,4 @@ This repository contains detailed notes from the course "**Mathematics for Machi
 1. Explore the cheatsheets to get a quick review of topics.
 2. Run and experiment with Jupyter notebooks to apply knowledge through hands-on projects.
 
-Have fun exploring and refreshing your mathematical knowledge for machine learning and data science!
+Have fun exploring and refreshing your mathematical knowledge for machine learning and data science! 🚀🧠
